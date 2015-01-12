@@ -1,0 +1,3 @@
+class Thread(object):
+    pass
+

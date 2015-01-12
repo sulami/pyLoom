@@ -18,6 +18,7 @@ setup(name='pyloom',
       author_email='sulami@peerwire.org',
       license='MIT',
       packages=['pyloom'],
+      test_suite = 'pyloom.tests',
       zip_safe=False,
       classifiers=[
           'Development Status :: 4 - Beta',
