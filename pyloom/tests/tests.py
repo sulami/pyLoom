@@ -21,6 +21,16 @@ class ThreadTestCase(unittest.TestCase):
         t.add_item(i)
         self.assertIn(i, t.items)
 
+class ItemTestCase(unittest.TestCase):
+    def setUp(self):
+        from pyloom.item import Item
+        self.Item = Item
+        self.assertIsNotNone(self.Item)
+
+    def test_creating_an_item(self):
+        i = self.Item()
+        self.assertIsNotNone(i)
+
 if __name__ == '__main__':
     unittest.main()
 
