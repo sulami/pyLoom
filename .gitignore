@@ -1,0 +1,5 @@
+*.pyc
+.pyloom
+*.egg-info
+dist
+
