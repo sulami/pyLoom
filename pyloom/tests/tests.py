@@ -13,6 +13,7 @@ class ThreadTestCase(unittest.TestCase):
         t = self.Thread('t1')
         self.assertIsNotNone(t)
         self.assertEqual(t.name, 't1')
+        self.assertEqual(t.items, [])
 
 if __name__ == '__main__':
     unittest.main()
