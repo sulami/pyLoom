@@ -15,6 +15,12 @@ class ThreadTestCase(unittest.TestCase):
         self.assertEqual(t.name, 't1')
         self.assertEqual(t.items, [])
 
+    def test_adding_an_item(self):
+        t = self.Thread('t1')
+        i = object()
+        t.add_item(i)
+        self.assertIn(i, t.items)
+
 if __name__ == '__main__':
     unittest.main()
 
