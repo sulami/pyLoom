@@ -13,13 +13,6 @@ class ThreadTestCase(unittest.TestCase):
         t = self.Thread('t1')
         self.assertIsNotNone(t)
         self.assertEqual(t.name, 't1')
-        self.assertEqual(t.items, [])
-
-    def test_adding_an_item(self):
-        t = self.Thread('t1')
-        i = object()
-        t.add_item(i)
-        self.assertIn(i, t.items)
 
 class ItemTestCase(unittest.TestCase):
     def setUp(self):
