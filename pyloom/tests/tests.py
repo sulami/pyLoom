@@ -21,8 +21,8 @@ class EventsTestCase(unittest.TestCase):
         self.assertIsNotNone(self.Event)
 
     def test_creating_an_event(self):
-        i = self.Event()
-        self.assertIsNotNone(i)
+        e = self.Event()
+        self.assertIsNotNone(e)
 
 class CampaignTestCase(unittest.TestCase):
     def setUp(self):
@@ -31,7 +31,9 @@ class CampaignTestCase(unittest.TestCase):
         self.assertIsNotNone(self.Campaign)
 
     def test_creating_a_campaign(self):
-        pass
+        c = self.Campaign('DnD')
+        self.assertIsNotNone(c)
+        self.assertEqual(c.name, 'DnD')
 
 if __name__ == '__main__':
     unittest.main()
