@@ -32,8 +32,9 @@ class EventsTestCase(unittest.TestCase):
         self.assertIsNotNone(self.Event)
 
     def test_creating_an_event(self):
-        e = self.Event()
+        e = self.Event('session')
         self.assertIsNotNone(e)
+        self.assertEqual(e.session, 'session')
 
 class CampaignTestCase(unittest.TestCase):
     def setUp(self):
