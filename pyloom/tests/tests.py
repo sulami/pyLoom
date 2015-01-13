@@ -14,15 +14,24 @@ class ThreadTestCase(unittest.TestCase):
         self.assertIsNotNone(t)
         self.assertEqual(t.name, 't1')
 
-class ItemTestCase(unittest.TestCase):
+class EventsTestCase(unittest.TestCase):
     def setUp(self):
-        from pyloom.item import Item
-        self.Item = Item
-        self.assertIsNotNone(self.Item)
+        from pyloom.event import Event
+        self.Event = Event
+        self.assertIsNotNone(self.Event)
 
-    def test_creating_an_item(self):
-        i = self.Item()
+    def test_creating_an_event(self):
+        i = self.Event()
         self.assertIsNotNone(i)
+
+class CampaignTestCase(unittest.TestCase):
+    def setUp(self):
+        from pyloom.campaign import Campaign
+        self.Campaign = Campaign
+        self.assertIsNotNone(self.Campaign)
+
+    def test_creating_a_campaign(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()
