@@ -34,6 +34,23 @@ class CampaignTestCase(unittest.TestCase):
         c = self.Campaign('DnD')
         self.assertIsNotNone(c)
         self.assertEqual(c.name, 'DnD')
+        self.assertEqual(c.events, [])
+
+    def test_adding_an_event(self):
+        c = self.Campaign('DnD')
+        c.add_event(None)
+        self.assertEqual(c.events, [None, ])
+
+    def test_adding_an_event_in_position(self):
+        c = self.Campaign('DnD')
+        c.add_event(1)
+        self.assertEqual(c.events, [1, ])
+        c.add_event(2, pos=0)
+        self.assertEqual(c.events, [2, 1])
+        c.add_event(3, pos=1)
+        self.assertEqual(c.events, [2, 3, 1])
+        c.add_event(4)
+        self.assertEqual(c.events, [2, 3, 1, 4])
 
 if __name__ == '__main__':
     unittest.main()
