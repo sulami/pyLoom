@@ -14,6 +14,17 @@ class ThreadTestCase(unittest.TestCase):
         self.assertIsNotNone(t)
         self.assertEqual(t.name, 't1')
 
+class SessionTestCase(unittest.TestCase):
+    def setUp(self):
+        from pyloom.session import Session
+        self.session = Session
+        self.assertIsNotNone(self.session)
+
+    def test_creating_a_session(self):
+        s = self.session('s1')
+        self.assertIsNotNone(s)
+        self.assertEqual(s.name, 's1')
+
 class EventsTestCase(unittest.TestCase):
     def setUp(self):
         from pyloom.event import Event
