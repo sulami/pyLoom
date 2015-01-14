@@ -3,58 +3,47 @@
 
 import unittest
 
-class ThreadTestCase(unittest.TestCase):
-    def setUp(self):
-        from pyloom.thread import Thread
-        self.Thread = Thread
-        self.assertIsNotNone(self.Thread)
+from pyloom.campaign import Campaign
+from pyloom.event import Event
+from pyloom.session import Session
+from pyloom.thread import Thread
 
+class ThreadTestCase(unittest.TestCase):
     def test_creating_a_thread(self):
-        t = self.Thread('t1')
+        t = Thread('t1')
         self.assertIsNotNone(t)
         self.assertEqual(t.name, 't1')
 
 class SessionTestCase(unittest.TestCase):
-    def setUp(self):
-        from pyloom.session import Session
-        self.session = Session
-        self.assertIsNotNone(self.session)
-
     def test_creating_a_session(self):
-        s = self.session('s1')
+        s = Session('s1')
         self.assertIsNotNone(s)
         self.assertEqual(s.name, 's1')
 
-class EventsTestCase(unittest.TestCase):
-    def setUp(self):
-        from pyloom.event import Event
-        self.Event = Event
-        self.assertIsNotNone(self.Event)
+    def test_get_a_session(self):
+        s1 = Session('s1')
+        s2 = Session('s2')
 
     def test_creating_an_event(self):
-        e = self.Event('session')
+        s = Session('s1')
+        e = Event(s)
         self.assertIsNotNone(e)
-        self.assertEqual(e.session, 'session')
+        self.assertEqual(e.session, s)
 
 class CampaignTestCase(unittest.TestCase):
-    def setUp(self):
-        from pyloom.campaign import Campaign
-        self.Campaign = Campaign
-        self.assertIsNotNone(self.Campaign)
-
     def test_creating_a_campaign(self):
-        c = self.Campaign('DnD')
+        c = Campaign('DnD')
         self.assertIsNotNone(c)
         self.assertEqual(c.name, 'DnD')
         self.assertEqual(c.events, [])
 
     def test_adding_an_event(self):
-        c = self.Campaign('DnD')
+        c = Campaign('DnD')
         c.add_event(None)
         self.assertEqual(c.events, [None, ])
 
     def test_adding_an_event_in_position(self):
-        c = self.Campaign('DnD')
+        c = Campaign('DnD')
         c.add_event(1)
         self.assertEqual(c.events, [1, ])
         c.add_event(2, pos=0)
