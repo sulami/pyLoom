@@ -3,4 +3,5 @@ class Session(object):
 
     def __init__(self, name):
         self.name = name
+        self.events = []
 

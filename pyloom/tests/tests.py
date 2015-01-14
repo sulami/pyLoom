@@ -24,6 +24,17 @@ class SessionTestCase(unittest.TestCase):
         s1 = Session('s1')
         s2 = Session('s2')
 
+        e1 = Event(s1)
+        e2 = Event(s1)
+        e3 = Event(s1)
+        e4 = Event(s2)
+        e5 = Event(s2)
+        e6 = Event(s2)
+
+        ses1 = s1.events
+        self.assertEqual(ses1, [e1, e2, e3])
+
+class EventsTestCase(unittest.TestCase):
     def test_creating_an_event(self):
         s = Session('s1')
         e = Event(s)

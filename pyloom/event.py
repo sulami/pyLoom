@@ -3,4 +3,5 @@ class Event(object):
 
     def __init__(self, session):
         self.session = session
+        self.session.events.append(self)
 
