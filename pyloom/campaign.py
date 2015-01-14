@@ -1,13 +1,16 @@
+from pyloom.session import Session
+
 class Campaign(object):
     """Holds all events in a given campaign"""
 
     def __init__(self, name):
         self.name = name
-        self.events = []
+        self.sessions = []
 
-    def add_event(self, event, pos=-1):
+    def add_session(self, session, pos=-1):
+        s = Session(session)
         if pos == -1:
-            self.events.append(event)
+            self.sessions.append(s)
         else:
-            self.events.insert(pos, event)
+            self.sessions.insert(pos, s)
 

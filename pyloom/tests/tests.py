@@ -46,23 +46,22 @@ class CampaignTestCase(unittest.TestCase):
         c = Campaign('DnD')
         self.assertIsNotNone(c)
         self.assertEqual(c.name, 'DnD')
-        self.assertEqual(c.events, [])
+        self.assertEqual(c.sessions, [])
 
-    def test_adding_an_event(self):
+    def test_adding_a_session(self):
         c = Campaign('DnD')
-        c.add_event(None)
-        self.assertEqual(c.events, [None, ])
+        c.add_session('Session 1')
+        self.assertEqual(len(c.sessions), 1)
+        self.assertIsInstance(c.sessions[0], Session)
 
-    def test_adding_an_event_in_position(self):
+    def test_adding_an_session_in_position(self):
         c = Campaign('DnD')
-        c.add_event(1)
-        self.assertEqual(c.events, [1, ])
-        c.add_event(2, pos=0)
-        self.assertEqual(c.events, [2, 1])
-        c.add_event(3, pos=1)
-        self.assertEqual(c.events, [2, 3, 1])
-        c.add_event(4)
-        self.assertEqual(c.events, [2, 3, 1, 4])
+        c.add_session('Session 1')
+        first = c.sessions[0]
+        c.add_session('Session 2', pos=0)
+        self.assertEqual(len(c.sessions), 2)
+        self.assertNotEqual(first, c.sessions[0])
+        self.assertEqual(first, c.sessions[1])
 
 if __name__ == '__main__':
     unittest.main()
